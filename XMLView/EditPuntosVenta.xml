@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view>
+    <columns>
+        <group name="basic" numcolumns="12">
+
+            <column name="name" order="110" numcolumns="6">
+                <widget type="number" decimal="0" fieldname="codpv"/>
+            </column>
+
+            <column name="descripcion" numcolumns="6" order="120">
+                <widget type="text" fieldname="descripcion"/>
+            </column>
+        </group>
+
+    </columns>
+</view>
