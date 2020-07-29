@@ -9,6 +9,7 @@ class PuntosVenta extends Base\ModelClass
 
     public $codpv;
     public $description;
+    public $tipo;
     
 
     public static function primaryColumn()

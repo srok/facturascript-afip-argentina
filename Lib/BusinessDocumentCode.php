@@ -33,8 +33,10 @@ class BusinessDocumentCode extends BusinessDocumentCodeCore{
             '{SERIE}' => $document->codserie,
             '{0SERIE}' => \str_pad($document->codserie, 2, '0', \STR_PAD_LEFT),
             '{NUM}' => $document->numero,
+            '{NUM2}' => $document->numero2,
             '{PVENTA}' => \str_pad($document->codpv, 4, '0', \STR_PAD_LEFT),
-            '{0NUM}' => \str_pad($document->numero, $sequence->longnumero, '0', \STR_PAD_LEFT)
+            '{0NUM}' => \str_pad($document->numero, $sequence->longnumero, '0', \STR_PAD_LEFT),
+            '{0NUM2}' => \str_pad($document->numero2, $sequence->longnumero, '0', \STR_PAD_LEFT)
         ]);
     }
 

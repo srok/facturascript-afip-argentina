@@ -2,6 +2,16 @@
 
 namespace FacturaScripts\Plugins\Afip\Lib;
 
+use FacturaScripts\Core\Model\Base\BusinessDocument;
+use FacturaScripts\Core\Model\Base\BusinessDocumentLine;
+use FacturaScripts\Dinamic\Model\Cliente;
+use FacturaScripts\Dinamic\Model\Empresa;
+use FacturaScripts\Dinamic\Model\Impuesto;
+use FacturaScripts\Dinamic\Model\ImpuestoZona;
+use FacturaScripts\Dinamic\Model\Proveedor;
+use FacturaScripts\Dinamic\Lib\RegimenIVA as DinRegimenIVA;
+use FacturaScripts\Dinamic\Model\Serie;
+
 use FacturaScripts\Core\Lib\BusinessDocumentTools as BusinessDocumentToolsCore;
 
 class BusinessDocumentTools extends BusinessDocumentToolsCore{
