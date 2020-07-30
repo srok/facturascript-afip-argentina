@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     Document   : facturascli.xml
-    Author     : Carlos Garcia Gomez
+    Author     : Srok
     Description:
         Structure for the facturascli table.
---><table>
+        EL código puede arrancar en null
+    -->
+    <table>
     <column>
         <name>codpv</name>
         <type>integer</type>
         <null>NO</null>
     </column>  
-   
+     <column>
+        <name>cae</name>
+        <type>character varying(100)</type>
+    </column>  
+     <column>
+        <name>caefechavto</name>
+        <type>character varying(100)</type>
+    </column> 
     <constraint>
         <name>ca_puntosventa_facturascli</name>
         <type>FOREIGN KEY (codpv) REFERENCES puntosventa (codpv) ON DELETE RESTRICT ON UPDATE CASCADE</type>
     </constraint>
-   
+
 </table>

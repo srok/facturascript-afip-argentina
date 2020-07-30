@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <view>
-    <columns>
+    <columns>  	
         <group name="data" valign="bottom" numcolumns="12">
-            <column name="Punto de venta" titleurl="ListPuntosVenta" numcolumns="2" order="200">
+            <column name="Patrón completado" order="200" numcolumns="2">
+                <widget type="text" fieldname="patron2" maxlength="30" />
+         	</column>
+            <column name="Punto de venta" titleurl="ListPuntosVenta" numcolumns="2" order="210">
                 <widget type="select" fieldname="puntoventa" required="true">
                     <values source="puntosventa" fieldcode="codpv" fieldtitle="descripcion" />
                 </widget>
