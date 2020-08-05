@@ -79,7 +79,7 @@ class NotaCreditoCliente extends Base\SalesDocument
     {
         parent::clear();
         $this->codoperaciondoc = BusinessDocTypeOperation::defaultValue();
-        $this->codsubtipodoc = BusinessDocSubType::defaultValue();
+        $this->codsubtipodoc = 'NC';
         $this->pagada = false;
     }
 
