@@ -21,27 +21,43 @@ class BusinessDocumentCode extends BusinessDocumentCodeCore{
      * @param BusinessDocument $document
      * @param bool             $newNumber
      */
-    public static function getNewCode(&$document, $newNumber = true, $altpattern = false)
-    {
+     public static function getNewCode(&$document, $newNumber = true, $altpattern = false)
+     {
+        
+
+
         $sequence = static::getSequence($document);
+
         if ($newNumber) {
             $document->numero = static::getNewNumber($sequence, $document);
         }
-        $patron=$sequence->patron;
+        $patron = $sequence->patron;
+        
         if($altpattern){
-            $patron=$sequence->patron2;
+            $patron = $sequence->patron2;
         }
-        $document->codigo = \strtr($patron, [
+
+        $docTags = [
             '{EJE}' => $document->codejercicio,
             '{EJE2}' => \substr($document->codejercicio, -2),
             '{SERIE}' => $document->codserie,
             '{0SERIE}' => \str_pad($document->codserie, 2, '0', \STR_PAD_LEFT),
             '{NUM}' => $document->numero,
-            '{NUM2}' => $document->numero2,
             '{PVENTA}' => \str_pad($document->codpv, 4, '0', \STR_PAD_LEFT),
-            '{0NUM}' => \str_pad($document->numero, $sequence->longnumero, '0', \STR_PAD_LEFT),
-            '{0NUM2}' => \str_pad($document->numero2, $sequence->longnumero, '0', \STR_PAD_LEFT)
-        ]);
+            '{0NUM}' => \str_pad($document->numero, $sequence->longnumero, '0', \STR_PAD_LEFT)
+        ];
+
+        if(static::isSalesDocument( $document )){
+            $docTags['{NUM2}'] = $document->numero2;
+            $docTags['{0NUM2}'] = \str_pad($document->numero2, $sequence->longnumero, '0', \STR_PAD_LEFT);
+
+        }else{ //PurchaseDocument
+            $docTags['{NUMPROV}'] = $document->numproveedor;
+            $docTags['{0NUMPROV}'] = \str_pad($document->numproveedor, $sequence->longnumero, '0', \STR_PAD_LEFT);
+        }
+
+        $document->codigo = \strtr($patron, $docTags);
+        
     }
 
      /**
@@ -51,8 +67,8 @@ class BusinessDocumentCode extends BusinessDocumentCodeCore{
      *
      * @return SecuenciaDocumento
      */
-    protected static function getSequence(&$document)
-    {
+     protected static function getSequence(&$document)
+     {
 
         $selectedSequence = new SecuenciaDocumento();
 
@@ -88,6 +104,11 @@ class BusinessDocumentCode extends BusinessDocumentCodeCore{
         // }
 
         return $selectedSequence;
+    }
+
+    public static function isSalesDocument( &$document ){
+
+        return is_subclass_of($document, '\FacturaScripts\Core\Model\Base\SalesDocument');
     }
 
     // public static function getSequencePublic(&$document){

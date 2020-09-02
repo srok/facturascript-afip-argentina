@@ -67,9 +67,9 @@ class BusinessDocumentTools extends BusinessDocumentToolsCore{
         	 $line->codimpuesto = $newCodimpuesto;
         	 $line->iva=$line->getTax()->iva;
         	 $iva=$line->getTax()->iva;
-    	  $line->pvptotal = $line->pvptotal * (1 + ($iva/100));
-    	  $line->pvpunitario = $line->pvpunitario * (1 + ($iva/100));
-    	  $line->pvpsindto = $line->pvpsindto * (1 + ($iva/100));
+    	  // $line->pvptotal = $line->pvptotal * (1 + ($iva/100));
+    	  // $line->pvpunitario = $line->pvpunitario * (1 + ($iva/100));
+    	  // $line->pvpsindto = $line->pvpsindto * (1 + ($iva/100));
         }
 
         if ($save) {

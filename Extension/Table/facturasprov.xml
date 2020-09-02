@@ -10,7 +10,11 @@
         <type>integer</type>
         <null>NO</null>
     </column>  
-   
+      <column>
+        <name>codigo</name>
+        <type>character varying(50)</type>
+        <null>NO</null>
+    </column>  
     <constraint>
         <name>ca_puntosventa_facturasprov</name>
         <type>FOREIGN KEY (codpv) REFERENCES puntosventa (codpv) ON DELETE RESTRICT ON UPDATE CASCADE</type>
