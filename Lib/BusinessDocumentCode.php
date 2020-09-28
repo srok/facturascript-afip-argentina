@@ -77,9 +77,14 @@ class BusinessDocumentCode extends BusinessDocumentCodeCore{
         $where = [
             new DataBaseWhere('codserie', $document->codserie),
             new DataBaseWhere('idempresa', $document->idempresa),
-            new DataBaseWhere('puntoventa', $document->codpv),
+        
             new DataBaseWhere('tipodoc', $document->modelClassName()),
         ];
+
+        if( self::isSalesDocument( $document ) ){
+             $where[] = new DataBaseWhere('puntoventa', $document->codpv);
+        }
+
         foreach ($sequence->all($where) as $seq) {
             if (empty($seq->codejercicio)) {
                 /// sequence for all exercises

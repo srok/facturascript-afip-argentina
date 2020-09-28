@@ -3,11 +3,11 @@
     <column>
         <name>puntoventa</name>
         <type>integer</type>
-        <null>NO</null>
+       
     </column>
      <column>
         <name>patron2</name>
-        <type>character varying(30)</type>
+        <type>character varying(50)</type>
     </column>
      <constraint>
         <name>ca_secuencias_documentos_puntosventa</name>
